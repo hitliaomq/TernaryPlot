@@ -1,3 +1,5 @@
+#### `[![DOI](https://zenodo.org/badge/160682550.svg)](https://zenodo.org/badge/latestdoi/160682550)`
+
 ## TernaryPlot *V1.1*
 
 **Function**: Plot Ternary figure for ternary system
