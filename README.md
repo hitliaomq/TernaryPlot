@@ -22,7 +22,7 @@ N: The number of grid, positive integer. 100 (default)
 
 PlotType: 'surf' or 's' - for surface
 
-​         'contour' or 'c' - for countour
+​        'contour' or 'c' - for countour
 
 ​         'contourl' or 'c+l' - for contour + label
 
