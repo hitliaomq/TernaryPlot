@@ -13,17 +13,27 @@
 TernaryPlot(X0, Y0, Z0, PlotType, N, Grid, Label, Caxis)
 
 X0, Y0, Z0: The data need to be drawn
+
 ​           They should be same in size, 1D or 2D
+
 ​           X0, Y0 [0, 1], Z0 no limit
+
 N: The number of grid, positive integer. 100 (default)
+
 PlotType: 'surf' or 's' - for surface
+
 ​         'contour' or 'c' - for countour
+
 ​         'contourl' or 'c+l' - for contour + label
+
 ​         'contourf' or 'c+f' - for contour with color
+
 ​         'contourfl' or 'c+f+l' - for contour with color with label
 
 Grid: on or off(default)
+
 Label: {'A', 'B', 'C'}(default)
+
 Caxis: [cmin, cmax] 
 
 Only X0, Y0 and Z0 are necessary. For example, you can run as follows
