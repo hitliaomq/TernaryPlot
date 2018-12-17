@@ -35,6 +35,9 @@ end
 if ~exist('Label', 'var')
     Label  = {'A', 'B', 'C'};
 end
+if ~exist('PlotType', 'var')
+    PlotType = 's';
+end
 
 maxX = max(max(X0));
 minX = min(min(X0));
@@ -57,10 +60,13 @@ for i = 1:N
 end
 [TXi, TYi] = XY2Ter(Xi, Yi);
 % Tri = GetTri(N);
+TZi_noNan = TZi;
+TZi_noNan(isnan(TZi_noNan)) = [];
+TZi_norm = (TZi - min(TZi_noNan))/(max(TZi_noNan) - min(TZi_noNan));
 TernaryAxes(XLim, Grid, Label)
 hold on
 if strcmpi(PlotType, 'surf') || strcmp(PlotType, 's')
-    trisurf(Tri, TXi, TYi, TZi, 'EdgeColor', 'interp');
+    trisurf(Tri, TXi, TYi, TZi_norm, TZi, 'EdgeColor', 'interp');
     shading interp
     colorbar;
     view([0, 0, 1]);
