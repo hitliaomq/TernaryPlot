@@ -4,7 +4,9 @@
 
 ***
 
-**Function**: Plot Ternary figure for ternary system
+## Function
+
+ Plot Ternary figure for ternary system
 
 ---
 
@@ -14,7 +16,7 @@ Mingqing Liao. (2018, December 6). hitliaomq/TernaryPlot 1.1.1 (Version 1.1.1). 
 
 ***
 
-**Usage:**
+## Usage
 
 TernaryPlot(X0, Y0, Z0, PlotType, N, Grid, Label, Caxis)
 
@@ -50,7 +52,7 @@ TernaryPlot(X0, Y0, Z0, PlotType)
 
 ***
 
-**TEST:**
+## TEST
 
 For test, just load the file *TEST.mat* , then type *TernaryPlot(X, Y, Z)*
 
@@ -58,7 +60,7 @@ For test, just load the file *TEST.mat* , then type *TernaryPlot(X, Y, Z)*
 
 ---
 
-**Change Log**
+## Change Log
 
 *V 1.2*
 
