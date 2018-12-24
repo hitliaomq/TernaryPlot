@@ -6,6 +6,12 @@
 
 **Function**: Plot Ternary figure for ternary system
 
+---
+
+## Please Cite
+
+Mingqing Liao. (2018, December 6). hitliaomq/TernaryPlot 1.1.1 (Version 1.1.1). Zenodo. http://doi.org/10.5281/zenodo.1998783
+
 ***
 
 **Usage:**
@@ -79,8 +85,11 @@ Function: Plot Ternary figure for ternary system
 Feathers:
 
 1. Plot type: color mapping, contour, contour with label, contour with color, contour with label and color
+
 2. For color mapping, it provide 3D view(need normalization)
+
 3. Some basic default value for input
+
 
 
 
