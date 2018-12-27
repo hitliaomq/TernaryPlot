@@ -1,4 +1,4 @@
-function TernaryAxes(XLim, Grid, Label, TickType, NOrS)
+function TernaryAxes(XLim, Grid, Box, Label, LabelPos, Tick, TickType, NOrS)
 % varargin  XLim, Grid, Label, varargin
 close all
 h = axes;
@@ -16,15 +16,23 @@ elseif strcmpi(TickType, 'Step') || strcmpi(TickType, 'S')
 end
 PlotTriAngle(xmin, xmax, h);
 hold on
-AddTick(xmin, xmax, n, h);
+if strcmpi(Tick, 'on')
+    AddTick(xmin, xmax, n, h);
+    k = 0.08;
+else
+    k = 0.03;
+end
 % Grid = Grid;
 if strcmpi(Grid, 'on')
     PlotGrid(xmin, xmax, n);
 end
+if strcmpi(Box, 'on')
+    AddBox(xmin, xmax, h)
+end
 if nargin == 2
     Label = {'A', 'B', 'C'};
 end
-AddLabel(xmin, xmax, Label, h);
+AddLabel(xmin, xmax, Label, LabelPos, k, h);
 % load('TEST.mat');
 % [TerX, TerY] = XY2Ter(X, Y);
 % scatter(TerX, TerY)
@@ -38,9 +46,9 @@ else
 end
 v = [xmin, xmin; xmax, xmin; xmin, xmax];
 [v(:, 1), v(:, 2)] = XY2Ter(v(:, 1), v(:, 2));
-c = [1 0 0; % red
-    0 1 0; % green
-    0 0 1]; % blue
+c = [0 0 1; % blue
+    1 0 0; % red
+    0 1 0]; % gree
 patch(h, 'Faces',[1, 2, 3],'Vertices',v,'FaceVertexCData',c,...
     'EdgeColor','flat','FaceColor','w','LineWidth',2);
 axis equal
@@ -94,26 +102,57 @@ for i = 1:n_row
 end
 end
 
-function AddLabel(xmin, xmax, Label, varargin)
-if nargin == 3
+function AddLabel(xmin, xmax, Label, LabelPos, k, varargin)
+if nargin == 4
     h = varargin{1};
 else
     h = gca;
 end
 delta = (xmax - xmin);
-x = [(xmin + xmax)/2, (xmin + xmax)/2, xmin];
-y = [xmin, (xmin + xmax)/2, (xmin + xmax)/2];
+% k = 0.08;
+if strcmpi(LabelPos, 'center')
+    x = [(xmin + xmax)/2, (xmin + xmax)/2, xmin];
+    y = [xmin, (xmin + xmax)/2, (xmin + xmax)/2];
+    deltax = [0, k*sin(pi/3)*delta, -k*sin(pi/3)*delta];
+    deltay = [-k*delta, k*cos(pi/3)*delta, k*cos(pi/3)*delta];
+    Ang = [0, -60, 60];
+elseif strcmpi(LabelPos, 'corner')
+    x = [xmin, xmax, xmin];
+    y = [xmin, xmin, xmax];
+    deltax = [-k*sin(pi/3)*delta ,  k*sin(pi/3)*delta, 0];
+    deltay = [-k*cos(pi/3)*delta, -k*cos(pi/3)*delta, k*delta];
+    Ang = [0, 0, 0];
+end
 [x, y] = XY2Ter(x, y);
-k = 0.08;
-deltax = [0, k*sin(pi/3)*delta, -k*sin(pi/3)*delta];
-deltay = [-k*delta, k*cos(pi/3)*delta, k*cos(pi/3)*delta];
-Ang = [0, -60, 60];
+
 C = {'r', 'g', 'b'};
 for i = 1:3
     text(h, x(i) + deltax(i), y(i) + deltay(i), Label{i}, ...
             'FontSize', 12,...
             'Color', C{i}, 'Rotation', Ang(i), 'HorizontalAlignment', 'center');
 end
+end
+
+function AddBox(xmin, xmax, varargin)
+if nargin == 3
+    h = varargin{1};
+else
+    h = gca;
+end
+v = [xmin, xmin; xmax, xmin; xmin, xmax];
+[v(:, 1), v(:, 2)] = XY2Ter(v(:, 1), v(:, 2));
+v(1:3, 3) = 1;
+c = [0 0 1; % blue
+    1 0 0; % red
+    0 1 0]; % gree
+patch(h, 'Faces',[1, 2, 3],'Vertices',v,'FaceVertexCData',c,...
+    'EdgeColor','flat','FaceColor','none','LineWidth',1.5);
+hold on
+for i = 1:3
+    line([v(i, 1), v(i, 1)], [v(i, 2), v(i, 2)], [0, 1],...
+        'Color', c(i, :), 'LineWidth',1.5)
+end
+% axis equal
 end
 
 function [GridX, GridY] = GetGridXY(xmin, xmax, n)

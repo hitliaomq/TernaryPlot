@@ -1,19 +1,35 @@
-function TernaryPlot(X0, Y0, Z0, PlotType, N, Grid, Label, Caxis)
-%% Input
+function TernaryPlot(X0, Y0, Z0, varargin)
+%% Syntax
+% TernaryPlot(X, Y, Z)
+% TernaryPlot(X, Y, Z, PlotType)
+% TernaryPlot(__, Name, Value)
+%% Description
+% TernaryPlot(X, Y, Z) creates a 3-D ternary surf with A+B+C=1 
+% TernaryPlot(X, Y, Z, PlotType) creates ternary plot with type defined by
+%                                PlotType
+% TernaryPlot(__, Name, Value) specifies the ternary axies properties using
+%                              one or more Name, Value pair arguments
+%% Input Arguments
 % X0, Y0, Z0: The data need to be drawn
 %             They should be same in size, 1D or 2D
 %             X0, Y0 [0, 1], Z0 no limit
-% N: The number of grid, positive integer. 100 (default)
 % PlotType: surf or s - for surface
 %           contour or c - for countour
 %           contourl or c+l - for contour + label
 %           contourf or c+f - for contour with color
 %           contourfl or c+f+l - for contour with color with label
-% Grid: on or off(default)
-% Label: {'A', 'B', 'C'}(default)
-% Caxis: [cmin, cmax]
-% 
-% Author: Liao Mingqing(liaomq1900127@163.com)
+% Others Name, Value pair arguments
+%   Grid: on or off(default)
+%   Tick: on(default) | off
+%   Label: {'A', 'B', 'C'}(default)
+%   LabelPos: 'center'(default) | corner
+%   Caxis: [cmin, cmax]
+%% Author Information
+% Author: Liao Mingqing
+% E-mail: liaomq1900127@163.com
+% GitHub: https://github.com/hitliaomq/TernaryPlot
+% Cite: Mingqing Liao. (2018, December 6). hitliaomq/TernaryPlot. Zenodo.
+%       DOI:http://doi.org/10.5281/zenodo.1998782 
 % Acknowledge: The following is a reference. https://github.com/alchemyst/ternplot
 
 %% For test
@@ -26,17 +42,63 @@ function TernaryPlot(X0, Y0, Z0, PlotType, N, Grid, Label, Caxis)
 % Label = {'Nb', 'Ti', 'V'};
 % PlotType = 'surf';
 
-if ~exist('N', 'var')
-    N = 100;
+% default values of input
+N = 100;
+Grid = 'off';
+Box = 'off';
+Label = {'A', 'B', 'C'};
+PlotType = 's';
+Tick = 'on';
+LabelPos = 'center';
+
+if nargin < 3
+    error('ERROR: The input is not enough. At least 3 verctors.');
+elseif nargin == 4
+    PlotType = varargin{1};
+elseif nargin > 4
+    if ismember(varargin{1}, {'surf', 'contour', 'contourf', 'contourl',...
+            'contourfl', 's', 'c', 'c+l', 'c+f', 'c+f+l'})
+        PlotType = varargin{1};
+        i_start = 2;
+    else
+        i_start = 1;
+    end
+    n_in = nargin - 2 - i_start;
+    if mod(n_in, 2)
+        error('ERROR: The input dismatch.');
+    end
+    flag = 0;
+    for i = i_start:(nargin - 3)
+        if flag
+            flag = 0;
+            continue
+        else
+            varin = varargin{i};
+            if strcmpi(varin, 'label')
+                Label = varargin{i + 1};
+            elseif strcmpi(varin, 'box')
+                Box = varargin{i + 1};
+            elseif strcmpi(varin, 'grid')
+                Grid = varargin{i + 1};
+            elseif strcmpi(varin, 'caxis')
+                Caxis = varargin{i + 1};
+            elseif strcmpi(varin, 'tick')
+                Tick = varargin{i + 1};
+            elseif strcmpi(varin, 'labelpos')
+                LabelPos = varargin{i + 1};
+            end
+            flag = 1;
+        end
+        
+    end
 end
-if ~exist('Grid', 'var')
-    Grid = 'off';
-end
-if ~exist('Label', 'var')
-    Label  = {'A', 'B', 'C'};
-end
-if ~exist('PlotType', 'var')
-    PlotType = 's';
+
+if ismember(PlotType, {'contour', 'contourf', 'contourl',...
+        'contourfl', 'c', 'c+l', 'c+f', 'c+f+l'})
+    if strcmpi(Box, 'on')
+        Box = 'off';
+        warning('The Box parameter is set as off.');
+    end
 end
 
 maxX = max(max(X0));
@@ -63,9 +125,9 @@ end
 TZi_noNan = TZi;
 TZi_noNan(isnan(TZi_noNan)) = [];
 TZi_norm = (TZi - min(TZi_noNan))/(max(TZi_noNan) - min(TZi_noNan));
-TernaryAxes(XLim, Grid, Label)
+TernaryAxes(XLim, Grid, Box, Label, LabelPos, Tick)
 hold on
-if strcmpi(PlotType, 'surf') || strcmp(PlotType, 's')
+if strcmpi(PlotType, 'surf') || strcmp(PlotType,  's')
     trisurf(Tri, TXi, TYi, TZi_norm, TZi, 'EdgeColor', 'interp');
     shading interp
     colorbar;
