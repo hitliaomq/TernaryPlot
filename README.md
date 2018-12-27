@@ -24,33 +24,31 @@ TernaryPlot(__, Name, Value)
 
 ## Description
 
-TernaryPlot(X, Y, Z) creates a 3-D ternary surf with A+B+C=1 
-TernaryPlot(X, Y, Z, PlotType) creates ternary plot with type defined by PlotType
-TernaryPlot(__, Name, Value) specifies the ternary axies properties using one or more Name, Value pair arguments
+TernaryPlot(X, Y, Z) creates a 3-D ternary surf with A+B+C=1   
+TernaryPlot(X, Y, Z, PlotType) creates ternary plot with type defined by PlotType  
+TernaryPlot(__, Name, Value) specifies the ternary axies properties using one or more Name, Value pair arguments  
 
 ## Input Arguments
-X, Y, Z: The data need to be drawn
-​            They should be same in size, 1D or 2D
-​             X0, Y0 [0, 1], Z0 no limit
-PlotType: surf or s - for surface
-​           contour or c - for countour
-​           contourl or c+l - for contour + label
-​           contourf or c+f - for contour with color
-​           contourfl or c+f+l - for contour with color with label
- Others Name, Value pair arguments
-   Grid: on or off(default)
-   Tick: on(default) | off
-   Label: {'A', 'B', 'C'}(default)
-   LabelPos: 'center'(default) | corner
-   Caxis: [cmin, cmax]
+X, Y, Z: The data need to be drawn  
+​            They should be same in size, 1D or 2D  
+​             X0, Y0 [0, 1], Z0 no limit  
+PlotType: surf or s - for surface  
+​           contour or c - for countour  
+​           contourl or c+l - for contour + label  
+​           contourf or c+f - for contour with color  
+​           contourfl or c+f+l - for contour with color with label  
+ Others Name, Value pair arguments  
+   Grid: on or off(default)  
+   Tick: on(default) | off  
+   Label: {'A', 'B', 'C'}(default)  
+   LabelPos: 'center'(default) | corner  
+   Caxis: [cmin, cmax]  
 
 ## Author Information
-Author: Liao Mingqing
-E-mail: liaomq1900127@163.com
-GitHub: https://github.com/hitliaomq/TernaryPlot
-Cite: Mingqing Liao. (2018, December 6). hitliaomq/TernaryPlot. Zenodo.
-​      DOI:http://doi.org/10.5281/zenodo.1998782 
- Acknowledge: When coding this package, the following code was taken as a reference. https://github.com/alchemyst/ternplot
+Author: Liao Mingqing  
+E-mail: liaomq1900127@163.com  
+GitHub: https://github.com/hitliaomq/TernaryPlot  
+Cite: Mingqing Liao. (2018, December 6). hitliaomq/TernaryPlot. Zenodo. DOI:http://doi.org/10.5281/zenodo.1998782       Acknowledge: When coding this package, the following code was taken as a reference. https://github.com/alchemyst/ternplot   
 
 ***
 
