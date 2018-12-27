@@ -30,8 +30,8 @@ TernaryPlot(__, Name, Value) specifies the ternary axies properties using one or
 
 ## Input Arguments
 X, Y, Z: The data need to be drawn  
-​            They should be same in size, 1D or 2D  
-​             X0, Y0 [0, 1], Z0 no limit  
+​                They should be same in size, 1D or 2D  
+​                X0, Y0 [0, 1], Z0 no limit  
 PlotType: surf or s - for surface  
 ​           contour or c - for countour  
 ​           contourl or c+l - for contour + label  
