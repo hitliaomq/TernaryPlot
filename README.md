@@ -18,9 +18,9 @@ Mingqing Liao. (2018, December 6). hitliaomq/TernaryPlot 1.1.1 (Version 1.1.1). 
 
 ## Syntax
 
-TernaryPlot(X, Y, Z)
-TernaryPlot(X, Y, Z, PlotType)
-TernaryPlot(__, Name, Value)
+TernaryPlot(X, Y, Z)  
+TernaryPlot(X, Y, Z, PlotType)  
+TernaryPlot(__, Name, Value)    
 
 ## Description
 
