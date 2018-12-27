@@ -29,20 +29,24 @@ TernaryPlot(X, Y, Z, PlotType) creates ternary plot with type defined by PlotTyp
 TernaryPlot(__, Name, Value) specifies the ternary axies properties using one or more Name, Value pair arguments  
 
 ## Input Arguments
-X, Y, Z: The data need to be drawn  
-​                They should be same in size, 1D or 2D  
-​                X0, Y0 [0, 1], Z0 no limit  
-PlotType: surf or s - for surface  
-​           contour or c - for countour  
-​           contourl or c+l - for contour + label  
-​           contourf or c+f - for contour with color  
-​           contourfl or c+f+l - for contour with color with label  
- Others Name, Value pair arguments  
-   Grid: on or off(default)  
-   Tick: on(default) | off  
-   Label: {'A', 'B', 'C'}(default)  
-   LabelPos: 'center'(default) | corner  
-   Caxis: [cmin, cmax]  
+1. X, Y, Z: The data need to be drawn  
+   ​                They should be same in size, 1D or 2D  
+   ​                X, Y [0, 1], Z no limit  
+
+2. PlotType: 
+
+   2.1. surf or s - for surface  
+   2.2  contour or c - for countour  
+   2.3  contourl or c+l - for contour + label  
+   2.4  contourf or c+f - for contour with color  
+   2.5  contourfl or c+f+l - for contour with color with label  
+
+3. Others Name, Value pair arguments  
+      Grid: on or off(default)  
+      Tick: on(default) | off  
+      Label: {'A', 'B', 'C'}(default)  
+      LabelPos: 'center'(default) | corner  
+      Caxis: [cmin, cmax]  
 
 ## Author Information
 Author: Liao Mingqing  
