@@ -14,6 +14,10 @@
 
 Mingqing Liao. (2018, December 6). hitliaomq/TernaryPlot 1.1.1 (Version 1.1.1). Zenodo. http://doi.org/10.5281/zenodo.1998782
 
+### Published papers
+
+[1] QU L., LIU Y., **LIAO M.**, et.al. Ultra-high temperature ceramics melting temperature prediction via machine learning. *Ceramics International*, 2019, 45:18551-18555. [DOI](https://doi.org/10.1016/j.ceramint.2019.06.076)
+
 ***
 
 ## Syntax
